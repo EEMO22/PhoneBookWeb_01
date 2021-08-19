@@ -3,8 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");%>
-<%
+List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");
+
 String holder = request.getParameter("search");
 if(holder == null) {
 	holder = "";
@@ -15,12 +15,14 @@ if(holder == null) {
 	<jsp:param value="목록" name="message"/></jsp:include>
 	
 	<form action="ps" method="POST" id="search">
+	
 		<label for="search">검색어</label>
 		<input type="hidden" name="a" value="search" />
+		
 		<input type="text" name="search" id="search" 
 			placeholder="<%= holder %>" />
 		<input type="submit" value="검색" />
-		<!-- placeholder사용해보기 -->
+		
 	</form>
 	
 	<br />
@@ -34,6 +36,7 @@ if(holder == null) {
 				<th width="100">도구</th>
 			</tr>
 		</thead>
+		
 		<tbody>
 		<% for (PhoneBookVO vo: list) { %>
 			<tr align="center">
@@ -50,6 +53,7 @@ if(holder == null) {
 			</tr>
 			<% } %>
 		</tbody>
+		
 	</table>
 	<br />
 	

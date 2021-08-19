@@ -36,7 +36,6 @@ String word = request.getParameter("search");
 	<h4><%= message %> (검색어: <%= word %>)</h4>
 	<%
 	}
-	%>
-	
+	%>	
 </body>
 </html>

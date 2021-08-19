@@ -26,7 +26,7 @@ if(holder == null) {
 	<br />
 	
 	<table border="1">
-		<thead bgcolor="lightGray" align="center">
+		<thead bgcolor="silver" align="center" style="border: none">
 			<tr>
 				<th width="100">이름</th>
 				<th width="150">휴대전화</th>

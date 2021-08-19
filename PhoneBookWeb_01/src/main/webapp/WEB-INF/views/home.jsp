@@ -4,20 +4,21 @@
     pageEncoding="UTF-8"%>
 <%
 List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>주소록</title>
-</head>
-<body>
-	<h3>주소록 Servlet</h3>
-	<h4>목록</h4>
+<%
+String holder = request.getParameter("search");
+if(holder == null) {
+	holder = "";
+}
+%>
+
+<jsp:include page="/WEB-INF/views/includes/header.jsp">
+	<jsp:param value="목록" name="message"/></jsp:include>
 	
-	<form action="ps" method="POST"> <%-- doGet으로는 안되나? --%>
+	<form action="ps" method="POST" id="search">
 		<label for="search">검색어</label>
 		<input type="hidden" name="a" value="search" />
-		<input type="text" name="search" id="search" />
+		<input type="text" name="search" id="search" 
+			placeholder="<%= holder %>" />
 		<input type="submit" value="검색" />
 		<!-- placeholder사용해보기 -->
 	</form>
@@ -25,17 +26,17 @@ List<PhoneBookVO> list = (List<PhoneBookVO>)request.getAttribute("list");%>
 	<br />
 	
 	<table border="1">
-		<thead>
+		<thead bgcolor="lightGray" align="center">
 			<tr>
-				<th>이름</th>
-				<th>휴대전화</th>
-				<th>전화번호</th>
-				<th>도구</th>
+				<th width="100">이름</th>
+				<th width="150">휴대전화</th>
+				<th width="150">전화번호</th>
+				<th width="100">도구</th>
 			</tr>
 		</thead>
 		<tbody>
 		<% for (PhoneBookVO vo: list) { %>
-			<tr>
+			<tr align="center">
 				<td><%= vo.getName() %></td>
 				<td><%= vo.getHp() %></td>
 				<td><%= vo.getTel() %></td>

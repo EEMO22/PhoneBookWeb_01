@@ -1,33 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>주소록</title>
-
-<style>
-	form {
-		width: 250px;
-		height: 200px;
-		border: 1px solid;
-		border-radius: 10px;
-		padding: 10px;
-	}
 	
-	#btn {
-		margin: auto;
-		display: block;
-	}
-
-</style>
-</head>
-<body>
-	<h3>주소록 Servlet</h3>
-	<h4>새 주소 등록</h4>
+<jsp:include page="/WEB-INF/views/includes/header.jsp">
+	<jsp:param value="새 주소 등록" name="message"/></jsp:include>
 	
 	<form action="<%= request.getContextPath() %>/ps" method="POST"
-	width: 300px; height: 250px; border: 1px solid>
+	width: 300px; height: 250px; border: 1px solid id="add">
 		<input type="hidden" value="add" name="a" />
 		<label for="name">이름</label><br />
 		<input type="text" name="name" id="name" /><br />

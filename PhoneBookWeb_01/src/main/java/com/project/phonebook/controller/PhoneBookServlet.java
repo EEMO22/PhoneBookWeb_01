@@ -31,7 +31,6 @@ public class PhoneBookServlet extends HttpServlet {
 			List<PhoneBookVO> list = dao.getList();
 			
 			req.setAttribute("list", list);
-			req.setAttribute("search", "");
 			
 			RequestDispatcher rd = getServletContext()
 					.getRequestDispatcher("/WEB-INF/views/home.jsp");

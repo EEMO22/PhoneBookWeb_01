@@ -86,7 +86,8 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 			conn = getConnection();
 			String sql = "SELECT id, name, hp, tel" + 
 						" FROM PHONE_BOOK " +
-						" WHERE name LIKE ?";
+						" WHERE name LIKE ?" + 
+						" ORDER BY id";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword + "%");

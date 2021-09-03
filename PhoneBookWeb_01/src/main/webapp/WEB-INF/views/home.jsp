@@ -13,53 +13,55 @@ if(holder == null) {
 
 <jsp:include page="/WEB-INF/views/includes/header.jsp">
 	<jsp:param value="목록" name="message"/></jsp:include>
-	
-	<form action="ps" method="POST" id="search">
-	
-		<label for="search">검색어</label>
-		<input type="hidden" name="a" value="search" />
+	<div class="container">
+		<form action="ps" method="POST" id="search">
 		
-		<input type="text" name="search" id="search" 
-			placeholder="<%= holder %>" />
-		<input type="submit" value="검색" />
-		
-	</form>
+			<label for="search">검색어</label>
+			<input type="hidden" name="a" value="search" />
+			
+			<input type="text" name="search" id="search" 
+				placeholder="<%= holder %>" />
+			<input type="submit" value="검색" button class="btn btn-dark btn-sm" id="srh" />
+			
+		</form>
+	</div>
 	
 	<br />
-	
-	<table border="1">
-		<thead bgcolor="silver" align="center" style="border: none">
-			<tr>
-				<th width="100">이름</th>
-				<th width="150">휴대전화</th>
-				<th width="150">전화번호</th>
-				<th width="100">도구</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-		<% for (PhoneBookVO vo: list) { %>
-			<tr align="center">
-				<td><%= vo.getName() %></td>
-				<td><%= vo.getHp() %></td>
-				<td><%= vo.getTel() %></td>
-				<td>
-					<form action="<%= request.getContextPath() %>/ps" method="POST">
-						<input type="hidden" name="a" value="delete" />
-						<input type="hidden" name="id" value="<%= vo.getId() %>" />
-						<input type="submit" value="삭제" />
-					</form>
-				</td>
-			</tr>
-			<% } %>
-		</tbody>
-		
-	</table>
+	<div class="container">
+	<div class="table table-striped">
+		<table>
+			<thead class="thead-dark">
+				<tr class="text-center">
+					<th scope="col">이름</th>
+					<th scope="col">휴대전화</th>
+					<th scope="col">전화번호</th>
+					<th scope="col">도구</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			<% for (PhoneBookVO vo: list) { %>
+				<tr>
+					<td><%= vo.getName() %></td>
+					<td><%= vo.getHp() %></td>
+					<td><%= vo.getTel() %></td>
+					<td>
+						<form action="<%= request.getContextPath() %>/ps" method="POST">
+							<input type="hidden" name="a" value="delete" />
+							<input type="hidden" name="id" value="<%= vo.getId() %>" />
+							<input type="submit" value="삭제" button class="btn btn-outline-secondary btn-sm" />
+						</form>
+					</td>
+				</tr>
+				<% } %>
+			</tbody>
+			
+		</table>
+	</div>
+	</div>
 	<br />
 	
-	<p>
-		<a href="<%= request.getContextPath() %>/ps?a=form">새 주소 추가</a>
-	</p>
+	<jsp:include page="/WEB-INF/views/modal.jsp" />
 	
 </body>
 </html>
